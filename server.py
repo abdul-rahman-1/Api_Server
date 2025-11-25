@@ -27,10 +27,9 @@ def home():
     return jsonify({"Dara on": "/Data Rout"}), 200
     
 @app.route('/data', methods=['GET'])
-def health_check():
+def redirect_data():
     return redirect("https://www.youtube.com/shorts/HpsREFRAXFQ", code=302)
 
-# ---------------------- HEALTH CHECK ----------------------
 @app.route('/health', methods=['GET'])
 def health_check():
     return jsonify({"status": "OK"}), 200
