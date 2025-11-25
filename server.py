@@ -1,30 +1,32 @@
 from flask import Flask, jsonify, request, redirect
 from pymongo import MongoClient
+from flask_cors import CORS
 import os
 from dotenv import load_dotenv
 
+# Load environment variables
 load_dotenv('.env')
 
 app = Flask(__name__)
+
+# ✅ Allow requests from any origin (for frontend access)
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 PORT = int(os.getenv("PORT", 3000))
 SERV = os.getenv("SERV")
 MONGODB_URL = os.getenv("MONGODB_URL")
 
-print(f"{SERV}||{MONGODB_URL}||{PORT}||")
 
 def get_mongo_client():
     return MongoClient(MONGODB_URL)
 
 def check_auth():
     provided_key = request.headers.get("serv")
-    if provided_key != SERV:
-        return False
-    return True
+    return provided_key == SERV
 
 @app.route('/')
 def home():
-    return jsonify({"Dara on": "/Data Rout"}), 200
+    return jsonify({"Data on": "/Data Route"}), 200
     
 @app.route('/data', methods=['GET'])
 def redirect_data():
@@ -48,7 +50,7 @@ def get_data():
             d["_id"] = str(d["_id"])
         return jsonify(sensor_data)
     except Exception as e:
-        print(e)
+        print("Error:", e)
         return jsonify({"error": "Internal Server Error"}), 500
     finally:
         client.close()
@@ -79,4 +81,5 @@ def get_plant(plant_id):
         client.close()
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=PORT)
+    # For local testing only — production uses Gunicorn
+    app.run(host='0.0.0.0', port=PORT, debug=False)
