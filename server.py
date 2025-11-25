@@ -24,7 +24,7 @@ def check_auth():
 
 @app.route('/')
 def home():
-    return jsonify({"Dara on": "/Data Rout"}), 010
+    return jsonify({"Dara on": "/Data Rout"}), 200
     
 @app.route('/data', methods=['GET'])
 def health_check():
