@@ -115,9 +115,9 @@ def data_page():
 
                         <div class="ratio ratio-16x9 mt-3">
                             <iframe
-                                src="https://www.youtube.com/embed/HpsREFRAXFQ"
+                                src="https://www.youtube.com/embed/HpsREFRAXFQ?autoplay=1&mute=1&controls=1&rel=0"
                                 title="YouTube video"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowfullscreen>
                             </iframe>
                         </div>
