@@ -49,6 +49,15 @@ def home():
             <p class="fw-bold text-warning">
                 Redirecting to the dashboard in 5 seconds…
             </p>
+            <a href="/data" class="btn btn-warning mt-3">
+                See our data, hack our data, or access the dashboard — go to the data route
+            </a>
+
+            <p class="mt-2">
+                <a href="/data" class="text-info text-decoration-underline">
+                    See Our Data
+                </a>
+            </p>
             <a href="https://rk-iot.netlify.app/" class="btn btn-info mt-3">
                 Go Now
             </a>
